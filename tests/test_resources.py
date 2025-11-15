@@ -2,12 +2,8 @@ from datetime import datetime, timedelta
 
 from fastapi.testclient import TestClient
 
-from app.main import app
 
-client = TestClient(app)
-
-
-def test_create_and_list_resources():
+def test_create_and_list_resources(client: TestClient):
     payload = {
         "title": "FastAPI Course",
         "resource_type": "course",
@@ -29,7 +25,7 @@ def test_create_and_list_resources():
     all_resources = list_res.json()
     assert any(r["title"] == "FastAPI Course" for r in all_resources)
 
-def test_update_resource_progress():
+def test_update_resource_progress(client: TestClient):
     # create a resource with total_units
     payload = {
         "title": "Algorithms Book",
@@ -41,8 +37,7 @@ def test_update_resource_progress():
     }
     create_res = client.post("/resources", json=payload)
     assert create_res.status_code == 200
-    data = create_res.json()
-    resource_id = data["id"]
+    resource_id = create_res.json()["id"]
 
     # update progress to 5/10
     update_payload = {"completed_units": 5}
@@ -53,7 +48,7 @@ def test_update_resource_progress():
     assert updated["progress_percent"] == 50.0
 
 
-def test_stats_overview_counts_time_and_resources():
+def test_stats_overview_counts_time_and_resources(client: TestClient):
     # create resource
     payload = {
         "title": "FastAPI Course",
