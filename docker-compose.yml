@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  api:
+    build: .
+    container_name: learning-progress-tracker
+    ports:
+      - "8000:8000"
+    volumes:
+      # Persist SQLite DB in /app/data
+      - learning_db:/app/data
+    environment:
+      # You can override DATABASE_URL here if you want
+      # DATABASE_URL: "sqlite:///./data/learning.db"
+      - PYTHONUNBUFFERED=1
+
+volumes:
+  learning_db:
+    driver: local
