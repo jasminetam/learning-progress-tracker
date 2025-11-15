@@ -9,7 +9,7 @@ A small **FastAPI** backend to track progress across different learning resource
 
 ---
 
-![Learning Progress Tracker Overview](assets/overview.png)
+![Learning Progress Tracker Overview](assets/Overview.png)
 
 ## Features
 
