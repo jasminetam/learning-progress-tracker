@@ -1,7 +1,7 @@
 from collections.abc import Iterator
 from pathlib import Path
 
-from sqlmodel import SQLModel, create_engine, Session
+from sqlmodel import Session, SQLModel, create_engine
 
 # Base directory of the project (one level up from app/)
 BASE_DIR = Path(__file__).resolve().parent.parent

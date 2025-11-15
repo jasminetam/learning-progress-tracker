@@ -3,11 +3,11 @@ from collections.abc import Iterator
 import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy.pool import StaticPool
-from sqlmodel import SQLModel, create_engine, Session
+from sqlmodel import Session, SQLModel, create_engine
 
-from app.main import app
-from app.database import get_session
 from app import models  # noqa: F401  # ensure tables are registered
+from app.database import get_session
+from app.main import app
 
 
 @pytest.fixture(scope="session")

@@ -10,6 +10,7 @@ select = [
 ]
 ignore = [
   "E501",  # line length (handled by black, optional)
+  "B008",  # FastAPI Depends(...) in defaults is intentional
 ]
 
 [format]
